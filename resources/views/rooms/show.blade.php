@@ -56,7 +56,10 @@
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="guests_number">
                     Liczba gości
                 </label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="guests_number" type="number" name="guests_number" min="1" max="{{ $room->capacity }}" required>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="guests_number" type="number" name="guests_number" min="1" max="{{ $room->capacity }}" value="1" required>
+            </div>
+            <div class="mb-6">
+                <p class="text-lg font-bold">Całkowita cena: <span id="total_price">0.00</span> PLN</p>
             </div>
             <div class="flex items-center justify-between">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
@@ -65,5 +68,36 @@
             </div>
         </form>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkInInput = document.getElementById('check_in');
+            const checkOutInput = document.getElementById('check_out');
+            const guestsNumberInput = document.getElementById('guests_number');
+            const totalPriceSpan = document.getElementById('total_price');
+            const pricePerPerson = {{ $room->price_per_person }};
+
+            function calculateTotalPrice() {
+                const checkIn = new Date(checkInInput.value);
+                const checkOut = new Date(checkOutInput.value);
+                const guestsNumber = parseInt(guestsNumberInput.value) || 1;
+
+                if (checkIn && checkOut && checkOut > checkIn) {
+                    const nights = (checkOut - checkIn) / (1000 * 60 * 60 * 24);
+                    const totalPrice = pricePerPerson * guestsNumber * nights;
+                    totalPriceSpan.textContent = totalPrice.toFixed(2);
+                } else {
+                    totalPriceSpan.textContent = '0.00';
+                }
+            }
+
+            checkInInput.addEventListener('change', calculateTotalPrice);
+            checkOutInput.addEventListener('change', calculateTotalPrice);
+            guestsNumberInput.addEventListener('input', calculateTotalPrice);
+
+            // Oblicz cenę przy ładowaniu strony
+            calculateTotalPrice();
+        });
+    </script>
 </body>
 </html>
