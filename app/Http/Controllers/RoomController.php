@@ -58,4 +58,27 @@ class RoomController extends Controller
         return redirect()->route('reservation.confirmation', $reservation->id)
             ->with('success', 'Rezerwacja została pomyślnie utworzona.');
     }
+
+    public function uploadImage(Request $request, $id)
+    {
+        $room = Room::findOrFail($id);
+        
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->extension();
+            $image->move(public_path('images/rooms'), $imageName);
+
+            $room->images()->create([
+                'image_path' => 'images/rooms/' . $imageName
+            ]);
+
+            return back()->with('success', 'Zdjęcie zostało dodane.');
+        }
+
+        return back()->with('error', 'Wystąpił błąd podczas przesyłania zdjęcia.');
+    }
 }

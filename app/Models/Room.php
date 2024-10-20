@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use App\Models\RoomImage;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Room extends Model
 {
@@ -40,5 +41,10 @@ class Room extends Model
         $checkOut = Carbon::parse($checkOut);
         $nights = $checkIn->diffInDays($checkOut);
         return $this->price_per_person * $guestsNumber * $nights;
+    }
+
+    public function images()
+    {
+        return $this->hasMany(RoomImage::class);
     }
 }

@@ -4,32 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wyniki wyszukiwania</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
+<style>
+    .swiper-container {
+        width: 100%;
+        height: 256px;
+    }
+    .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .swiper-button-next, .swiper-button-prev {
+        color: white;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 30px 20px;
+        border-radius: 5px;
+    }
+    .swiper-button-next:after, .swiper-button-prev:after {
+        font-size: 20px;
+    }
+</style>
 <body class="bg-gray-100">
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-3xl font-bold mb-8">Wyniki wyszukiwania</h1>
-        <p class="mb-4">Okres pobytu: {{ $checkIn->format('d.m.Y') }} - {{ $checkOut->format('d.m.Y') }}</p>
-        @if($rooms->isEmpty())
-            <p class="text-lg">Nie znaleziono pokoi spełniających kryteria.</p>
-        @else
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                @foreach($rooms as $room)
-                    <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                        <div class="p-6">
-                            <h2 class="text-xl font-bold mb-2">{{ $room->name }}</h2>
-                            <p class="text-gray-600 mb-4">{{ Str::limit($room->description, 100) }}</p>
-                            <p class="text-lg font-semibold">Cena: {{ number_format($room->price, 2) }} PLN / noc (za osobe)</p>
-                            <p class="text-gray-600">Maksymalna liczba gości: {{ $room->capacity }}</p>
-                            <a  href="{{ route('room.show', ['id' => $room->id, 'check_in' => $checkIn->format('Y-m-d'), 'check_out' => $checkOut->format('Y-m-d')]) }}"
-                                class="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                Szczegóły i rezerwacja
-                            </a>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            @foreach($rooms as $room)
+                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                    <div class="swiper-container h-64 relative">
+                        <div class="swiper-wrapper">
+                            @if($room->images->isEmpty())
+                                <div class="swiper-slide">
+                                    <img src="{{ asset('rooms_photos/room1.png') }}" alt="{{ $room->name }}" class="w-full h-full object-cover">
+                                </div>
+                            @else
+                                @foreach($room->images as $image)
+                                    <div class="swiper-slide">
+                                        <img src="{{ asset($image->image_path) }}" alt="{{ $room->name }}" class="w-full h-full object-cover">
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="absolute bottom-0 right-0 bg-black bg-opacity-50 text-white px-2 py-1 text-sm">
+                            Przesuń, aby zobaczyć więcej zdjęć
                         </div>
                     </div>
-                @endforeach
-            </div>
-        @endif
+                    <div class="p-6">
+                        <h2 class="text-xl font-bold mb-2">{{ $room->name }}</h2>
+                        <p class="text-gray-700 mb-4">{{ Str::limit($room->description, 100) }}</p>
+                        <p class="text-lg font-semibold">Cena: {{ number_format($room->price_per_person, 2) }} PLN / osoba / noc</p>
+                        <a href="{{ route('room.show', ['id' => $room->id, 'check_in' => $checkIn->format('Y-m-d'), 'check_out' => $checkOut->format('Y-m-d')]) }}"
+                            class="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            Szczegóły i rezerwacja
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
     </div>
+    
+    <script>
+        new Swiper('.swiper-container', {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
 </body>
 </html>
