@@ -26,6 +26,7 @@
                 <p><strong>Data zameldowania:</strong> {{ $reservation->check_in->format('d.m.Y') }}</p>
                 <p><strong>Data wymeldowania:</strong> {{ $reservation->check_out->format('d.m.Y') }}</p>
                 <p><strong>Liczba gości:</strong> {{ $reservation->guests_number }}</p>
+                <p><strong>Cena za osobę za noc:</strong> {{ number_format($reservation->room->price_per_person, 2) }} PLN</p>
                 <p><strong>Całkowita cena:</strong> {{ number_format($reservation->total_price, 2) }} PLN</p>
             </div>
         </div>

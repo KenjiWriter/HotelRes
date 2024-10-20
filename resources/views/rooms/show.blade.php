@@ -20,7 +20,7 @@
         <div class="bg-white shadow-md rounded-lg overflow-hidden mb-8">
             <div class="p-6">
                 <p class="text-gray-700 mb-4">{{ $room->description }}</p>
-                <p class="text-lg font-semibold mb-2">Cena: {{ number_format($room->price, 2) }} PLN / noc</p>
+                <p class="text-lg font-semibold mb-2">Cena: {{ number_format($room->price_per_person, 2) }} PLN / osoba / noc</p>
                 <p class="text-gray-600 mb-4">Maksymalna liczba gości: {{ $room->capacity }}</p>
             </div>
         </div>

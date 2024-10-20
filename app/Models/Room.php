@@ -2,16 +2,15 @@
 
 namespace App\Models;
 
-use App\Models\Reservation;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
 class Room extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'capacity', 'price', 'is_available'];
+    protected $fillable = ['name', 'description', 'capacity', 'price_per_person', 'is_available'];
 
     public function reservations()
     {
@@ -33,5 +32,13 @@ class Room extends Model
                     });
             })
             ->exists();
+    }
+
+    public function calculateTotalPrice($checkIn, $checkOut, $guestsNumber)
+    {
+        $checkIn = Carbon::parse($checkIn);
+        $checkOut = Carbon::parse($checkOut);
+        $nights = $checkIn->diffInDays($checkOut);
+        return $this->price_per_person * $guestsNumber * $nights;
     }
 }

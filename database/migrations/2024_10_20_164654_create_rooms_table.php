@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->integer('capacity');
-            $table->decimal('price', 8, 2);
+            $table->decimal('price_per_person', 8, 2);
             $table->boolean('is_available')->default(true);
             $table->timestamps();
         });

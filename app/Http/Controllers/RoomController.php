@@ -37,10 +37,11 @@ class RoomController extends Controller
         }
 
         // Oblicz całkowitą cenę
-        $checkIn = Carbon::parse($validatedData['check_in']);
-        $checkOut = Carbon::parse($validatedData['check_out']);
-        $nights = $checkIn->diffInDays($checkOut);
-        $totalPrice = $room->price * $nights;
+        $totalPrice = $room->calculateTotalPrice(
+            $validatedData['check_in'],
+            $validatedData['check_out'],
+            $validatedData['guests_number']
+        );
 
         // Utwórz rezerwację
         $reservation = $room->reservations()->create([
