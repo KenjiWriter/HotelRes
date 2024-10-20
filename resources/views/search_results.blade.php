@@ -21,8 +21,8 @@
                             <p class="text-gray-600 mb-4">{{ Str::limit($room->description, 100) }}</p>
                             <p class="text-lg font-semibold">Cena: {{ number_format($room->price, 2) }} PLN / noc</p>
                             <p class="text-gray-600">Maksymalna liczba gości: {{ $room->capacity }}</p>
-                            {{-- href="{{ route('room.show', ['id' => $room->id, 'check_in' => $checkIn->format('Y-m-d'), 'check_out' => $checkOut->format('Y-m-d')]) }}" --}}
-                            <a  class="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <a  href="{{ route('room.show', ['id' => $room->id, 'check_in' => $checkIn->format('Y-m-d'), 'check_out' => $checkOut->format('Y-m-d')]) }}"
+                                class="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                 Szczegóły i rezerwacja
                             </a>
                         </div>
