@@ -18,9 +18,9 @@
                 <span x-text="darkMode ? 'Light Mode' : 'Dark Mode'"></span>
             </button>
             <a href="{{ route('home') }}" class="text-xl font-bold text-center mx-auto">Hotel Reservation App</a>
-            <form action="{{ route('locale.change') }}" method="POST">
+            <form action="{{ route('locale.change') }}" method="POST" >
                 @csrf
-                <select class="dark:text-gray-300 dark:bg-gray-700" name="locale" onchange="this.form.submit()">
+                <select class="dark:text-gray-300 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md p-2 outline-none transition duration-300 ease-in-out" name="locale" onchange="this.form.submit()">
                     <option value="en"{{ app()->getLocale() == 'en' ? ' selected' : '' }}>English</option>
                     <option value="pl"{{ app()->getLocale() == 'pl' ? ' selected' : '' }}>Polski</option>
                 </select>

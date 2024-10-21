@@ -32,4 +32,5 @@ return [
     'email' => 'E-mail',
     'price_per_night' => 'Cena za osobę za noc',
     'back_to_home' => 'Powrót do strony głównej',
+    'suggested_rooms' => "Sugerowane pokoje"
 ];

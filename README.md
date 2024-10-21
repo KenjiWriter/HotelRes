@@ -62,7 +62,7 @@ php artisan serve
 
 
 ## Screenshots
-![](https://i.ibb.co/Gp11zZW/obraz-2024-10-20-213359361.png)
+![](https://i.ibb.co/rbt890R/obraz-2024-10-21-133134126.png)
 
 ![](https://i.ibb.co/jH88664/obraz-2024-10-20-213632264.png)
 

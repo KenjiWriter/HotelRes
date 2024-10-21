@@ -31,4 +31,5 @@ return [
     'guest' => 'Guest',
     'email' => 'Email',
     'back_to_home' => 'Back to Home Page',
+    'suggested_rooms' => "Suggested rooms"
 ];

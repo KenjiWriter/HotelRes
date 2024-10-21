@@ -10,7 +10,12 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home');
+        $today = now()->toDateString();
+        $suggestedRooms = Room::whereDoesntHave('reservations', function ($query) use ($today) {
+            $query->where('check_in', '<=', $today)
+                  ->where('check_out', '>=', $today);
+        })->inRandomOrder()->take(6)->get();
+        return view('home', compact('suggestedRooms'));
     }
 
     public function search(Request $request)
