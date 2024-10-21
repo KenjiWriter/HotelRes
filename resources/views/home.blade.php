@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rezerwacja pokoi hotelowych</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-100">
+@extends('layouts.app')
+@section('title', 'Rezerwacja pokoi hotelowych')
+@section('content')
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-3xl font-bold mb-8">Wyszukaj pokój</h1>
         <form action="{{ route('search') }}" method="GET" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -48,6 +42,4 @@
                 </button>
             </div>
         </form>
-    </div>
-</body>
-</html>
+@endsection

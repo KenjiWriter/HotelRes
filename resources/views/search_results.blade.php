@@ -1,34 +1,29 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wyniki wyszukiwania</title>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<style>
-    .swiper-container {
-        width: 100%;
-        height: 256px;
-    }
-    .swiper-slide img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    .swiper-button-next, .swiper-button-prev {
-        color: white;
-        background-color: rgba(0, 0, 0, 0.5);
-        padding: 30px 20px;
-        border-radius: 5px;
-    }
-    .swiper-button-next:after, .swiper-button-prev:after {
-        font-size: 20px;
-    }
-</style>
-<body class="bg-gray-100">
+@extends('layouts.app')
+@section('title', 'Wyniki wyszukiwania')
+
+@section('style')
+    <style>
+        .swiper-container {
+            width: 100%;
+            height: 256px;
+        }
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .swiper-button-next, .swiper-button-prev {
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 30px 20px;
+            border-radius: 5px;
+        }
+        .swiper-button-next:after, .swiper-button-prev:after {
+            font-size: 20px;
+        }
+    </style>
+@endsection
+@section('content')
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-3xl font-bold mb-8">Wyniki wyszukiwania</h1>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -67,8 +62,8 @@
                 </div>
             @endforeach
         </div>
-    </div>
-    
+@endsection
+@section('scripts')
     <script>
         new Swiper('.swiper-container', {
             loop: true,
@@ -81,5 +76,4 @@
             },
         });
     </script>
-</body>
-</html>
+@endsection
