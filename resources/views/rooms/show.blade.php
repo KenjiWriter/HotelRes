@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', $room->name . ' - Szczegóły pokoju')
+@section('title', __('messages.room_name', ['name' => $room->name]))
 @section('style')
     <style>
         .swiper-container {
@@ -28,7 +28,7 @@
 
         @if(session('error'))
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
-                <strong class="font-bold">Błąd!</strong>
+                <strong class="font-bold">{{ __('messages.error') }}</strong>
                 <span class="block sm:inline">{{ session('error') }}</span>
             </div>
         @endif
@@ -55,7 +55,7 @@
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
                     <div class="absolute bottom-0 right-0 bg-black bg-opacity-50 text-white px-2 py-1 text-sm dark:text-white">
-                        Przesuń, aby zobaczyć więcej zdjęć
+                        {{ __('messages.swipe_to_see_more') }}
                     </div>
                 </div>
             </div>
@@ -63,50 +63,50 @@
             <!-- Description on the right -->
             <div class="w-1/2 p-6">
                 <p class="text-gray-700 mb-4 dark:text-white">{{ $room->description }}</p>
-                <p class="text-lg font-semibold mb-2 dark:text-white">Cena: {{ number_format($room->price_per_person, 2) }} PLN / osoba / noc</p>
-                <p class="text-gray-600 mb-4 dark:text-white">Maksymalna liczba gości: {{ $room->capacity }}</p>
+                <p class="text-lg font-semibold mb-2 dark:text-white">{{ __('messages.price') }}: {{ number_format($room->price_per_person, 2) }} {{ __('messages.per_person_per_night') }}</p>
+                <p class="text-gray-600 mb-4 dark:text-white">{{ __('messages.capacity') }}: {{ $room->capacity }}</p>
             </div>
         </div>
 
-        <h2 class="text-2xl font-bold mb-4">Zarezerwuj pokój</h2>
+        <h2 class="text-2xl font-bold mb-4">{{ __('messages.booking_room') }}</h2>
         <form action="{{ route('room.reserve', $room->id) }}" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 dark:bg-gray-800">
             @csrf
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2 dark:text-white" for="guest_name">
-                    Imię i nazwisko
+                    {{ __('messages.guest_name') }}
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline dark:text-gray-300 dark:bg-gray-700" id="guest_name" type="text" name="guest_name" required>
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2 dark:text-white" for="guest_email">
-                    Adres e-mail
+                    {{ __('messages.guest_email') }}
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline dark:text-gray-300 dark:bg-gray-700" id="guest_email" type="email" name="guest_email" required>
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2 dark:text-white" for="check_in">
-                    Data zameldowania
+                    {{ __('messages.check_in') }}
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline dark:text-gray-300 dark:bg-gray-700" id="check_in" type="date" name="check_in" value="{{ $checkIn ? $checkIn->format('Y-m-d') : '' }}" required>
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2 dark:text-white" for="check_out">
-                    Data wymeldowania
+                    {{ __('messages.check_out') }}
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline dark:text-gray-300 dark:bg-gray-700" id="check_out" type="date" name="check_out" value="{{ $checkOut ? $checkOut->format('Y-m-d') : '' }}" required>
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2 dark:text-white" for="guests_number">
-                    Liczba gości
+                    {{ __('messages.guests_number') }}
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline dark:text-gray-300 dark:bg-gray-700" id="guests_number" type="number" name="guests_number" min="1" max="{{ $room->capacity }}" value="1" required>
             </div>
             <div class="mb-6">
-                <p class="text-lg font-bold">Całkowita cena: <span id="total_price">0.00</span> PLN</p>
+                <p class="text-lg font-bold">{{ __('messages.total_price') }}: <span id="total_price">0.00</span> PLN</p>
             </div>
             <div class="flex items-center justify-between">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                    Zarezerwuj
+                    {{ __('messages.reserve') }}
                 </button>
             </div>
         </form>
