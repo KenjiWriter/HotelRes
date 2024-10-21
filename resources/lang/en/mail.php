@@ -12,4 +12,5 @@ return [
     'cancellation_code' => 'Cancellation code',
     'cancel_reservation_link' => 'To cancel your reservation, click the link below:',
     'cancel_reservation' => 'Cancel reservation',
+    'cancel_info' => 'Cancellations can be made up to 48 hours before the booking start date.',
 ];

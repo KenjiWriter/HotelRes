@@ -72,6 +72,8 @@ php artisan serve
 
 ![](https://i.ibb.co/WtTPq5X/obraz-2024-10-20-213821779.png)
 
+![](https://i.ibb.co/LP1WF2s/obraz-2024-10-21-154918889.png)
+
 
 ## Contributing
 Contributions are welcome! Please fork this repository and submit pull requests for any features or improvements you would like to add.
