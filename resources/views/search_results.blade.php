@@ -23,12 +23,13 @@
         }
     </style>
 @endsection
+
 @section('content')
     <div class="container mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold mb-8">Wyniki wyszukiwania</h1>
+        <h1 class="text-3xl font-bold mb-8 dark:text-white">Wyniki wyszukiwania</h1>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($rooms as $room)
-                <div class="bg-white shadow-md rounded-lg overflow-hidden">
+                <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden">
                     <div class="swiper-container h-64 relative">
                         <div class="swiper-wrapper">
                             @if($room->images->isEmpty())
@@ -51,18 +52,20 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <h2 class="text-xl font-bold mb-2">{{ $room->name }}</h2>
-                        <p class="text-gray-700 mb-4">{{ Str::limit($room->description, 100) }}</p>
-                        <p class="text-lg font-semibold">Cena: {{ number_format($room->price_per_person, 2) }} PLN / osoba / noc</p>
+                        <h2 class="text-xl font-bold mb-2 dark:text-white">{{ $room->name }}</h2>
+                        <p class="text-gray-700 dark:text-gray-300 mb-4">{{ Str::limit($room->description, 100) }}</p>
+                        <p class="text-lg font-semibold dark:text-gray-300">Cena: {{ number_format($room->price_per_person, 2) }} PLN / osoba / noc</p>
                         <a href="{{ route('room.show', ['id' => $room->id, 'check_in' => $checkIn->format('Y-m-d'), 'check_out' => $checkOut->format('Y-m-d')]) }}"
-                            class="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                           class="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                             Szczegóły i rezerwacja
                         </a>
                     </div>
                 </div>
             @endforeach
         </div>
+    </div>
 @endsection
+
 @section('scripts')
     <script>
         new Swiper('.swiper-container', {
