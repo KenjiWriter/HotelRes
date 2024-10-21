@@ -22,6 +22,8 @@ This project is a demonstration of a hotel room reservation system built using L
   - **Responsive Design**: Ensures that the application is accessible and usable on various devices, including desktops, tablets, and smartphones.
   - **Multi-Language Support**: The application supports multiple languages, currently including English and Polish. Users can switch between languages for a localized experience.
   - **Dark/Light Mode**: Implements a toggle for dark and light mode, allowing users to choose their preferred color scheme for better readability and user experience.
+  - **Email Confirmation**: Sends an email confirmation upon successful reservation with details and a unique cancellation code.
+  - **Reservation Cancellation**: Provides a link in the confirmation email to cancel reservations up to 48 hours before check-in using a unique cancellation code.
 
 
 ## Installation

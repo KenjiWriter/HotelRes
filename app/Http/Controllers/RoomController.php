@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Room;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ReservationConfirmation;
 
 class RoomController extends Controller
 {
@@ -20,6 +22,8 @@ class RoomController extends Controller
     public function reserve(Request $request, $id)
     {
         $room = Room::findOrFail($id);
+
+        $cancellationCode = mt_rand(10000, 99999);
 
         $validatedData = $request->validate([
             'guest_name' => 'required|string|max:255',
@@ -51,9 +55,10 @@ class RoomController extends Controller
             'check_out' => $validatedData['check_out'],
             'guests_number' => $validatedData['guests_number'],
             'total_price' => $totalPrice,
+            'cancellation_code' => $cancellationCode,
         ]);
 
-        // TODO: Wysłać e-mail z potwierdzeniem
+        Mail::to($reservation->guest_email)->send(new ReservationConfirmation($reservation));
 
         return redirect()->route('reservation.confirmation', $reservation->id)
             ->with('success', 'Rezerwacja została pomyślnie utworzona.');

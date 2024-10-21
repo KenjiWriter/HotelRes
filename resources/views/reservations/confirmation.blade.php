@@ -5,13 +5,6 @@
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-3xl font-bold mb-8 dark:text-white">{{ __('messages.confirmation_title') }}</h1>
 
-        @if(session('success'))
-            <div class="bg-green-100 dark:bg-green-200 border border-green-400 text-green-700 dark:text-green-800 px-4 py-3 rounded relative mb-4" role="alert">
-                <strong class="font-bold">{{ __('messages.success_message') }}</strong>
-                <span class="block sm:inline">{{ session('success') }}</span>
-            </div>
-        @endif
-
         <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden mb-8">
             <div class="p-6">
                 <h2 class="text-2xl font-bold mb-4 dark:text-white">{{ __('messages.reservation_details') }}</h2>

@@ -17,6 +17,7 @@ class Reservation extends Model
         'check_out',
         'guests_number',
         'total_price',
+        'cancellation_code'
     ];
 
     protected $casts = [

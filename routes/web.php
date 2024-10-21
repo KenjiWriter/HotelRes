@@ -19,11 +19,13 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/search', [HomeController::class, 'search'])->name('search');
-    Route::get('/search-results', [HomeController::class, 'searchResults'])->name('search.results');
-    Route::get('/room/{id}', [RoomController::class, 'show'])->name('room.show');
-    Route::post('/room/{id}/reserve', [RoomController::class, 'reserve'])->name('room.reserve');
-    Route::get('/reservation/{id}/confirmation', [ReservationController::class, 'confirmation'])->name('reservation.confirmation');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/search', [HomeController::class, 'search'])->name('search');
+Route::get('/search-results', [HomeController::class, 'searchResults'])->name('search.results');
+Route::get('/room/{id}', [RoomController::class, 'show'])->name('room.show');
+Route::post('/room/{id}/reserve', [RoomController::class, 'reserve'])->name('room.reserve');
+Route::get('/reservation/{id}/confirmation', [ReservationController::class, 'confirmation'])->name('reservation.confirmation');
+Route::get('/reservation/{id}/cancel', [ReservationController::class, 'showCancelForm'])->name('reservation.cancel');
+Route::post('/reservation/{id}/cancel', [ReservationController::class, 'cancelReservation']);
 
 Route::post('/locale', [LocaleController::class, 'change'])->name('locale.change');
