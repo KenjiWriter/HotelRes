@@ -24,6 +24,7 @@ This project is a demonstration of a hotel room reservation system built using L
   - **Dark/Light Mode**: Implements a toggle for dark and light mode, allowing users to choose their preferred color scheme for better readability and user experience.
   - **Email Confirmation**: Sends an email confirmation upon successful reservation with details and a unique cancellation code.
   - **Reservation Cancellation**: Provides a link in the confirmation email to cancel reservations up to 48 hours before check-in using a unique cancellation code.
+  - **Dynamic Price Filtering**:  Allows users to sort room search results by ascending or descending price order dynamically.
 
 
 ## Installation
@@ -66,7 +67,7 @@ php artisan serve
 ## Screenshots
 ![](https://i.ibb.co/rbt890R/obraz-2024-10-21-133134126.png)
 
-![](https://i.ibb.co/jH88664/obraz-2024-10-20-213632264.png)
+![](https://i.ibb.co/DtkJpvQ/obraz-2024-10-22-174618572.png)
 
 ![](https://i.ibb.co/RybhBFY/obraz-2024-10-20-213731649.png)
 

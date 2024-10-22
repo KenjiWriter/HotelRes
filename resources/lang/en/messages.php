@@ -34,4 +34,8 @@ return [
     'suggested_rooms' => "Suggested rooms",
     'no_rooms_found' => 'No rooms found matching the criteria. Please try again with different parameters.',
     'missing_search_params' => 'Missing search parameters. Please fill out the form.',
+    'sort_by_price' => 'Sort by Price',
+    'default_order' => 'Default Order',
+    'price_ascending' => 'Price Ascending',
+    'price_descending' => 'Price Descending',
 ];

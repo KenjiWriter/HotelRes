@@ -35,4 +35,8 @@ return [
     'suggested_rooms' => "Sugerowane pokoje",
     'no_rooms_found' => 'Nie znaleziono pokoi spełniających kryteria. Proszę spróbować ponownie z innymi parametrami.',
     'no_search_parameters' => 'Brak parametrów wyszukiwania. Proszę wypełnić formularz.',
+    'sort_by_price' => 'Sortuj według ceny',
+    'default_order' => 'Domyślna kolejność',
+    'price_ascending' => 'Cena rosnąco',
+    'price_descending' => 'Cena malejąco',
 ];
