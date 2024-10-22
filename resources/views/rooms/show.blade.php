@@ -65,6 +65,13 @@
                 <p class="text-gray-700 mb-4 dark:text-white">{{ $room->description }}</p>
                 <p class="text-lg font-semibold mb-2 dark:text-white">{{ __('messages.price') }}: {{ number_format($room->price_per_person, 2) }} {{ __('messages.per_person_per_night') }}</p>
                 <p class="text-gray-600 mb-4 dark:text-white">{{ __('messages.capacity') }}: {{ $room->capacity }}</p>
+                <!-- Amenities -->
+                <h3 class="text-lg font-bold mt-4 dark:text-white">{{ __('amenities.Amenities')}}:</h3>
+                <ul class="list-disc list-inside dark:text-white">
+                    @foreach($room->amenities as $amenity)
+                        <li>{{ __('amenities.' . $amenity->name) }}</li>
+                    @endforeach
+                </ul>
             </div>
         </div>
 

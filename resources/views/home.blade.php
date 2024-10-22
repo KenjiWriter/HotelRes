@@ -36,6 +36,24 @@
                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="price_max" type="number" name="price_max" min="0" step="0.01">
                 </div>
             </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="amenities">
+                    {{ __('amenities.Amenities') }}
+                </label>
+                <div class="relative">
+                    <button type="button" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline" onclick="toggleDropdown()">
+                        {{ __('amenities.Select') }} {{ __('amenities.Amenities') }}
+                    </button>
+                    <div id="dropdown" class="absolute mt-1 w-full bg-white dark:bg-gray-900 shadow-md rounded hidden z-50 transition-all duration-300 ease-in-out transform opacity-0 scale-y-0 origin-top">
+                        @foreach(App\Models\Amenity::all() as $amenity)
+                            <label class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800">
+                                <input type="checkbox" name="amenities[]" value="{{ $amenity->id }}" class="mr-2">
+                                {{ __('amenities.' . $amenity->name) }}
+                            </label>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
             <div class="flex items-center justify-between">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                     {{ __('messages.search') }}
@@ -84,6 +102,22 @@
 @endsection
 @section('scripts')
     <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdown');
+            dropdown.classList.toggle('hidden');
+            dropdown.classList.toggle('opacity-0');
+            dropdown.classList.toggle('scale-y-0');
+        }
+
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('dropdown');
+            if (!event.target.closest('#dropdown') && !event.target.closest('button')) {
+                dropdown.classList.add('hidden');
+                dropdown.classList.add('opacity-0');
+                dropdown.classList.add('scale-y-0');
+            }
+        });
+
         new Swiper('.swiper-container', {
             loop: true,
             pagination: {

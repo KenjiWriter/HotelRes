@@ -31,5 +31,7 @@ return [
     'guest' => 'Guest',
     'email' => 'Email',
     'back_to_home' => 'Back to Home Page',
-    'suggested_rooms' => "Suggested rooms"
+    'suggested_rooms' => "Suggested rooms",
+    'no_rooms_found' => 'No rooms found matching the criteria. Please try again with different parameters.',
+    'missing_search_params' => 'Missing search parameters. Please fill out the form.',
 ];

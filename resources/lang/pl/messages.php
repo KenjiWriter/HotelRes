@@ -32,5 +32,7 @@ return [
     'email' => 'E-mail',
     'price_per_night' => 'Cena za osobę za noc',
     'back_to_home' => 'Powrót do strony głównej',
-    'suggested_rooms' => "Sugerowane pokoje"
+    'suggested_rooms' => "Sugerowane pokoje",
+    'no_rooms_found' => 'Nie znaleziono pokoi spełniających kryteria. Proszę spróbować ponownie z innymi parametrami.',
+    'no_search_parameters' => 'Brak parametrów wyszukiwania. Proszę wypełnić formularz.',
 ];

@@ -47,4 +47,9 @@ class Room extends Model
     {
         return $this->hasMany(RoomImage::class);
     }
+
+    public function amenities()
+    {
+        return $this->belongsToMany(Amenity::class);
+    }
 }
