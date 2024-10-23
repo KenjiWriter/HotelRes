@@ -9,6 +9,7 @@ This project is a demonstration of a hotel room reservation system built using L
 ## Technologies Used
 
   - **Laravel**: A PHP framework used for building the backend and handling routing, models, and controllers.
+  - **Livewire**: A full-stack framework for Laravel that makes building dynamic interfaces simple, without leaving the comfort of Laravel.
   - **Tailwind CSS**: A utility-first CSS framework used for styling the frontend.
   - **Swiper.js**: A modern slider library used to create a responsive image slider for displaying room photos.
   - **JavaScript**: Used for dynamic interactions, such as calculating total reservation costs based on user input.
@@ -25,6 +26,7 @@ This project is a demonstration of a hotel room reservation system built using L
   - **Email Confirmation**: Sends an email confirmation upon successful reservation with details and a unique cancellation code.
   - **Reservation Cancellation**: Provides a link in the confirmation email to cancel reservations up to 48 hours before check-in using a unique cancellation code.
   - **Dynamic Price Filtering**:  Allows users to sort room search results by ascending or descending price order dynamically.
+  - **Dynamic Room Availability Display**:  Shows the number of available rooms based on search criteria in real-time using Livewire.
 
 
 ## Installation

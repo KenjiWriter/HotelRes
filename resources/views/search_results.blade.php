@@ -33,5 +33,5 @@
 @endsection
 
 @section('scripts')
-    @livewireScripts
+@livewireScripts
 @endsection
