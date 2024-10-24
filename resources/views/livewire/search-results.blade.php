@@ -60,6 +60,7 @@
                     <p class="text-gray-700 dark:text-gray-300 mb-4">{{ Str::limit($room->description, 100) }}</p>
                     <p class="text-lg font-semibold dark:text-gray-300">{{ __('messages.price') }}: {{ number_format($room->price_per_person, 2) }} {{ __('messages.per_person_per_night') }}</p>
                     <p class="text-gray-600 mb-4 dark:text-white">{{ __('messages.capacity') }}: {{ $room->capacity }}</p>
+                    <p class="font-bold mb-4 text-gray-600 dark:text-white">Average Rating: {{ number_format($room->averageRating(), 1) }}</p>
                     <a href="{{ route('room.show', ['id' => $room->id, 'check_in' => $checkIn->format('Y-m-d'), 'check_out' => $checkOut->format('Y-m-d')]) }}"
                     class="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     {{ __('messages.details_and_booking') }}

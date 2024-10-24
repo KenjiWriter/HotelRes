@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ReservationController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -27,5 +28,7 @@ Route::post('/room/{id}/reserve', [RoomController::class, 'reserve'])->name('roo
 Route::get('/reservation/{id}/confirmation', [ReservationController::class, 'confirmation'])->name('reservation.confirmation');
 Route::get('/reservation/{id}/cancel', [ReservationController::class, 'showCancelForm'])->name('reservation.cancel');
 Route::post('/reservation/{id}/cancel', [ReservationController::class, 'cancelReservation']);
+Route::get('/review/create', [ReviewController::class, 'create'])->name('review.create');
+Route::post('/review/store', [ReviewController::class, 'store'])->name('review.store');
 
 Route::post('/locale', [LocaleController::class, 'change'])->name('locale.change');

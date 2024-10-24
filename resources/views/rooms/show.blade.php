@@ -117,6 +117,18 @@
                 </button>
             </div>
         </form>
+        <div class="mt-8">
+            <h3 class="text-xl font-bold mb-4">Average Rating: {{ number_format($room->averageRating(), 1) }}</h3>
+        
+            @foreach($room->reviews as $review)
+                <div class="mb-4 p-4 bg-gray-100 dark:bg-gray-800 rounded">
+                    <p><strong>Rating:</strong> {{ number_format($review->rating, 1) }}</p>
+                    @if($review->comment)
+                        <p><strong>Comment:</strong> {{ $review->comment }}</p>
+                    @endif
+                </div>
+            @endforeach
+        </div>
     </div>
 @endsection
 @section('scripts')

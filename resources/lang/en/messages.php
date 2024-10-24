@@ -40,4 +40,5 @@ return [
     'price_descending' => 'Price Descending',
     'invalid_date_range' => 'Check-out date cannot be earlier than check-in date.',
     'invalid_price_range' => 'Maximum price cannot be less than minimum price.',
+    'reservation_completed' => 'The reservation has been successfully created.',
 ];

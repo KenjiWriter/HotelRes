@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Room;
+use App\Mail\ReviewRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ReservationConfirmation;
@@ -59,9 +60,10 @@ class RoomController extends Controller
         ]);
 
         Mail::to($reservation->guest_email)->send(new ReservationConfirmation($reservation));
+        // Mail::to($reservation->guest_email)->send(new ReviewRequest($reservation));
 
         return redirect()->route('reservation.confirmation', $reservation->id)
-            ->with('success', 'Rezerwacja została pomyślnie utworzona.');
+            ->with('success', __('messages.reservation_completed'));
     }
 
     public function uploadImage(Request $request, $id)

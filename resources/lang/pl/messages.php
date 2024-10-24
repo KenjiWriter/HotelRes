@@ -41,4 +41,5 @@ return [
     'price_descending' => 'Cena malejąco',
     'invalid_date_range' => 'Data wymeldowania nie może być wcześniejsza niż data zameldowania.',
     'invalid_price_range' => 'Cena maksymalna nie może być mniejsza niż cena minimalna.',
+    'reservation_completed' => 'Rezerwacja została pomyślnie utworzona.',
 ];
