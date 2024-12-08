@@ -34,7 +34,7 @@ This project is a demonstration of a hotel room reservation system built using L
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/hotel-reservation.git
+git clone https://github.com/KenjiWriter/hotel-reservation.git
 cd hotel-reservation
 ```
 Install dependencies:
