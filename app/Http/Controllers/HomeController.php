@@ -55,7 +55,8 @@ class HomeController extends Controller
     
         // Filter by amenities
         if (!empty($searchParams['amenities'])) {
-            foreach ($searchParams['amenities'] as $amenityId) {
+            $amenities = is_array($searchParams['amenities']) ? $searchParams['amenities'] : [$searchParams['amenities']];
+            foreach ($amenities as $amenityId) {
                 $query->whereHas('amenities', function ($q) use ($amenityId) {
                     $q->where('amenities.id', $amenityId);
                 });

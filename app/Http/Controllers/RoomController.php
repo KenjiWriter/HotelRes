@@ -60,7 +60,7 @@ class RoomController extends Controller
         ]);
 
         Mail::to($reservation->guest_email)->send(new ReservationConfirmation($reservation));
-        // Mail::to($reservation->guest_email)->send(new ReviewRequest($reservation));
+        Mail::to($reservation->guest_email)->send(new ReviewRequest($reservation));
 
         return redirect()->route('reservation.confirmation', $reservation->id)
             ->with('success', __('messages.reservation_completed'));
@@ -69,7 +69,7 @@ class RoomController extends Controller
     public function uploadImage(Request $request, $id)
     {
         $room = Room::findOrFail($id);
-        
+
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);

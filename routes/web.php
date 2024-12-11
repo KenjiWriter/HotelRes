@@ -1,7 +1,11 @@
 <?php
 
+use App\Models\Reservation;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ReservationConfirmation;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\LocaleController;
@@ -30,5 +34,18 @@ Route::get('/reservation/{id}/cancel', [ReservationController::class, 'showCance
 Route::post('/reservation/{id}/cancel', [ReservationController::class, 'cancelReservation']);
 Route::get('/review/create', [ReviewController::class, 'create'])->name('review.create');
 Route::post('/review/store', [ReviewController::class, 'store'])->name('review.store');
+
+Route::get('/setup-production', function () {
+    Artisan::call('key:generate', ['--force' => true]);
+    Artisan::call('config:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('route:clear');
+    Artisan::call('view:clear');
+    Artisan::call('config:cache');
+    Artisan::call('route:cache');
+    Artisan::call('view:cache');
+    
+    return 'Production setup completed!';
+});
 
 Route::post('/locale', [LocaleController::class, 'change'])->name('locale.change');

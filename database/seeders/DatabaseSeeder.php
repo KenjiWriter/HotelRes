@@ -9,10 +9,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            // AmenitySeeder::class,
-            // RoomAmenitySeeder::class,
+            AmenitySeeder::class,
+            RoomAmenitySeeder::class,
             ReviewSeeder::class,
-            // RoomSeeder::class,
+            RoomSeeder::class,
         ]);
     }
 }

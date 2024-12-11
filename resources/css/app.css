@@ -1,3 +1,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.flatpickr-calendar.dark {
+    background: #374151;
+    border-color: #4B5563;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.dark .flatpickr-day {
+    color: #E5E7EB;
+}
+
+.dark .flatpickr-day.disabled {
+    color: #6B7280;
+}
+
+.dark .flatpickr-day.selected {
+    background: #3B82F6;
+    border-color: #3B82F6;
+}
+
+.dark .flatpickr-day:hover {
+    background: #4B5563;
+}
+
+.dark .flatpickr-months .flatpickr-month {
+    color: #E5E7EB;
+}
+
+.dark .flatpickr-current-month .flatpickr-monthDropdown-months {
+    color: #E5E7EB;
+}
+
+.dark .flatpickr-current-month input.cur-year {
+    color: #E5E7EB;
+}
+
+.dark .flatpickr-weekday {
+    color: #9CA3AF;
+}
