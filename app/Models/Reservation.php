@@ -17,12 +17,14 @@ class Reservation extends Model
         'check_out',
         'guests_number',
         'total_price',
-        'cancellation_code'
+        'cancellation_code',
+        'guests',
     ];
 
     protected $casts = [
         'check_in' => 'date',
         'check_out' => 'date',
+        'guests' => 'array'
     ];
 
     public function room()

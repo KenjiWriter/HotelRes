@@ -21,12 +21,12 @@ class ReviewSeeder extends Seeder
                 // $reservation = Reservation::where('room_id', $room->id)->inRandomOrder()->first();
 
                 // if ($reservation) {
-                    Review::create([
-                        'room_id' => $room->id,
-                        'reservation_id' => 17,
-                        'rating' => $faker->randomFloat(1, 1, 5),
-                        'comment' => $faker->sentence,
-                    ]);
+                Review::create([
+                    'room_id' => $room->id,
+                    'reservation_id' => 31,
+                    'rating' => $faker->randomFloat(1, 1, 5),
+                    'comment' => $faker->sentence,
+                ]);
                 // }
             }
         }

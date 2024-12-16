@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('check_in');
             $table->date('check_out');
             $table->integer('guests_number');
+            $table->json('guests')->nullable();
             $table->integer('cancellation_code');
             $table->decimal('total_price', 8, 2);
             $table->timestamps();

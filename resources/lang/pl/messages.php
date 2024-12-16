@@ -42,4 +42,9 @@ return [
     'invalid_date_range' => 'Data wymeldowania nie może być wcześniejsza niż data zameldowania.',
     'invalid_price_range' => 'Cena maksymalna nie może być mniejsza niż cena minimalna.',
     'reservation_completed' => 'Rezerwacja została pomyślnie utworzona.',
+    'adults' => 'Dorośli',
+    'children' => 'Dzieci',
+    'infants' => 'Niemowlęta',
+    'seniors' => 'Seniorzy',
+    'for_free' => 'Za darmo',
 ];

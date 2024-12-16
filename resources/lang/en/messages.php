@@ -41,4 +41,13 @@ return [
     'invalid_date_range' => 'Check-out date cannot be earlier than check-in date.',
     'invalid_price_range' => 'Maximum price cannot be less than minimum price.',
     'reservation_completed' => 'The reservation has been successfully created.',
+    'adults' => 'Adults',
+    'children' => 'Children',
+    'infants' => 'Infants',
+    'seniors' => 'Seniors',
+    'for_free' => "For free",
+    'teenagers' => 'Teenagers',
+    'guest_limit_reached' => 'Guest limit reached. You cannot add more guests.',
+    'at_least_one_adult_required' => 'At least one adult is required for the reservation.',
+    'room_not_available' => 'The room is not available for the selected dates.'
 ];
