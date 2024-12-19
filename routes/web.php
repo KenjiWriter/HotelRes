@@ -11,6 +11,8 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\DashboardController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -34,6 +36,18 @@ Route::get('/reservation/{id}/cancel', [ReservationController::class, 'showCance
 Route::post('/reservation/{id}/cancel', [ReservationController::class, 'cancelReservation']);
 Route::get('/review/create', [ReviewController::class, 'create'])->name('review.create');
 Route::post('/review/store', [ReviewController::class, 'store'])->name('review.store');
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::middleware(['guest'])->group(function () {
+        Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+        Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
+    });
+
+    Route::middleware(['auth', 'admin'])->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    });
+});
 
 Route::get('/setup-production', function () {
     Artisan::call('key:generate', ['--force' => true]);
