@@ -13,6 +13,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\RoomsController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -45,6 +46,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+        Route::get('/rooms', [RoomsController::class, 'index'])->name('rooms.index');
+        Route::get('/rooms/create', [RoomsController::class, 'create'])->name('rooms.create');
+        Route::post('/rooms/store', [RoomsController::class, 'store'])->name('rooms.store');
+
+        Route::get('/rooms/{id}/edit', [RoomsController::class, 'edit'])->name('rooms.edit');
+        Route::put('/rooms/{id}', [RoomsController::class, 'update'])->name('rooms.update');
+        Route::delete('/rooms/images/{id}', [RoomsController::class, 'deleteImage'])->name('rooms.delete-image');
+
+        Route::delete('/rooms/{id}', [RoomsController::class, 'destroy'])->name('rooms.destroy');
+
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     });
 });
