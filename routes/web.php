@@ -58,6 +58,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::delete('/rooms/{id}', [RoomsController::class, 'destroy'])->name('rooms.destroy');
 
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+        Route::get('/reservations', function () {
+            return view('admin.reservations.reservations');
+        })->name('reservations');
     });
 });
 
@@ -70,7 +74,7 @@ Route::get('/setup-production', function () {
     Artisan::call('config:cache');
     Artisan::call('route:cache');
     Artisan::call('view:cache');
-    
+
     return 'Production setup completed!';
 });
 

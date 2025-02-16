@@ -40,3 +40,7 @@
 .dark .flatpickr-weekday {
     color: #9CA3AF;
 }
+
+[x-cloak] {
+    display: none !important;
+}
