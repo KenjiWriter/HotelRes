@@ -57,4 +57,6 @@ return [
     'minimum_order_value_not_met' => 'Minimum order value not met.',
     'voucher_code' => 'Voucher Code',
     'original_price' => 'Original Price',
+    'discount' => 'Discount',
+
 ];

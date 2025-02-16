@@ -54,5 +54,7 @@ return [
     'minimum_order_value_not_met' => 'Minimalny koszt zamówienia nie został osiągnięty.',
     'voucher_code' => 'Kod promocyjny',
     'original_price' => 'Cena regularna',
+    'discount' => 'Zniżka',
+
 
 ];

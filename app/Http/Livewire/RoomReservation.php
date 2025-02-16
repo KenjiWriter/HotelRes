@@ -94,7 +94,9 @@ class RoomReservation extends Component
             })
             ->where(function ($query) {
                 $query->whereNull('usage_limit')
-                    ->orWhere('usage_limit', '>', 0);
+                    ->orWhere(function ($q) {
+                        $q->whereColumn('times_used', '<', 'usage_limit');
+                    });
             })
             ->first();
 
@@ -224,13 +226,12 @@ class RoomReservation extends Component
 
         // Mail::to($reservation->guest_email)->send(new ReservationConfirmation($reservation));
         // Mail::to($reservation->guest_email)->send(new ReviewRequest($reservation));
-
-        return redirect()->route('reservation.confirmation', $reservation->id)
-            ->with('success', __('messages.reservation_completed'));
-        if ($this->applied_voucher && $this->applied_voucher->usage_limit) {
-            $this->applied_voucher->usage_limit--;
+        if ($this->applied_voucher) {
+            $this->applied_voucher->times_used += 1;
             $this->applied_voucher->save();
         }
+        return redirect()->route('reservation.confirmation', $reservation->id)
+            ->with('success', __('messages.reservation_completed'));
     }
 
     public function render()
