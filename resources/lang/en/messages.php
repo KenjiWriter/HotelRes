@@ -49,5 +49,12 @@ return [
     'teenagers' => 'Teenagers',
     'guest_limit_reached' => 'Guest limit reached. You cannot add more guests.',
     'at_least_one_adult_required' => 'At least one adult is required for the reservation.',
-    'room_not_available' => 'The room is not available for the selected dates.'
+    'room_not_available' => 'The room is not available for the selected dates.',
+    'enter_voucher_code' => 'Enter voucher code',
+    'apply' => 'Apply',
+    'voucher_applied' => 'Voucher applied successfully.',
+    'invalid_voucher' => 'Invalid voucher code.',
+    'minimum_order_value_not_met' => 'Minimum order value not met.',
+    'voucher_code' => 'Voucher Code',
+    'original_price' => 'Original Price',
 ];

@@ -47,4 +47,12 @@ return [
     'infants' => 'Niemowlęta',
     'seniors' => 'Seniorzy',
     'for_free' => 'Za darmo',
+    'enter_voucher_code' => 'Wprowadź kod promocyjny',
+    'apply' => 'Zastosuj',
+    'voucher_applied' => 'Kod promocyjny został zastosowany.',
+    'invalid_voucher_code' => 'Nieprawidłowy kod promocyjny.',
+    'minimum_order_value_not_met' => 'Minimalny koszt zamówienia nie został osiągnięty.',
+    'voucher_code' => 'Kod promocyjny',
+    'original_price' => 'Cena regularna',
+
 ];

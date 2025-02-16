@@ -10,10 +10,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ReviewController;
-use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\Admin\AuthController;
-use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RoomsController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\Admin\VouchersController;
+use App\Http\Controllers\Admin\DashboardController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -62,6 +63,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/reservations', function () {
             return view('admin.reservations.reservations');
         })->name('reservations');
+
+        Route::get('/vouchers', [VouchersController::class, 'index'])->name('vouchers.index');
+        Route::get('/vouchers/create', [VouchersController::class, 'create'])->name('vouchers.create');
+        Route::get('/vouchers/{voucher}/edit', [VouchersController::class, 'edit'])->name('vouchers.edit');
     });
 });
 

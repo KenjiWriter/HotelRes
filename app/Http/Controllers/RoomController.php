@@ -20,6 +20,7 @@ class RoomController extends Controller
         return view('rooms.show', compact('room', 'checkIn', 'checkOut'));
     }
 
+
     public function reserve(Request $request, $id)
     {
         $room = Room::findOrFail($id);
